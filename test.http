@@ -1,0 +1,27 @@
+@server = http://localhost:4004
+@me = Authorization: Basic {{$processEnv USER}}:
+
+
+# Get service info
+GET {{server}}/browse
+{{me}}
+
+
+### ------------------------------------------------------------------------
+# Browse Books as any user
+GET {{server}}/browse/Books?
+   &$select=title,stock
+   &$expand=currency
+   &sap-language=de
+{{me}}
+
+
+
+### ------------------------------------------------------------------------
+# Submit Order as authenticated user
+# (send that three times to get out-of-stock message)
+POST {{server}}/browse/submitOrder
+Content-Type: application/json
+{{me}}
+
+{ "book":201, "quantity":5 }
