@@ -39,5 +39,18 @@
       "no-console": "off",
       "require-atomic-updates": "off"
     }
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "model": [
+          "db/schema.cds"
+        ],
+        "credentials": {
+          "database": "sqlite.db"
+        }
+      }
+    }
   }
 }

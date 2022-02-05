@@ -15,6 +15,7 @@ this.on('submitOrder', async (req) =>{
     let { stock } = b ;
     if (quantity > stock) return req.reject (409,`${quantity} exceeds stock for book #${book}`)
     await UPDATE ( Books , book) .with ({stock : stock -=quantity})
+   
     await this.emit ('OrderedBook', { book, quantity, buyer:req.user.id })
     return { stock }
 
