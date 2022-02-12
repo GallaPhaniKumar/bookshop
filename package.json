@@ -44,9 +44,6 @@
     "requires": {
       "db": {
         "kind": "sqlite",
-        "model": [
-          "db/schema.cds"
-        ],
         "credentials": {
           "database": "sqlite.db"
         }
