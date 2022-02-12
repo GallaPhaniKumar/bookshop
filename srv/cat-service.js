@@ -6,7 +6,6 @@ class CatalogService extends cds.ApplicationService {
         // const db = cds.connect.to({ kind: 'sqlite', credentials: { database: 'phani.db' } })
         const db = await cds.connect.to('db')
         const { Books } = cds.entities('sap.capire.bookshop');
-        debugger;
 
 
         // Reduce stock of ordered books if available stock suffices
@@ -16,7 +15,7 @@ class CatalogService extends cds.ApplicationService {
             if (quantity < 1) return req.reject(400, `quantity has to be 1 or more`);
             let b = await db.read (Books , book ,c => c.stock )
            // let {stock} = await db.read (Books,book, b => b.stock)
-            let {title} = await db.read (Books,book, b => b.title)
+            // let {title} = await db.read (Books,book, b => b.title)
             
             if (!b) return req.error(404, `Book #${book} doesn't exist`)
 
